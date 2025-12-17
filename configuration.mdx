@@ -1,0 +1,161 @@
+---
+title: Configuration and Customization
+description: Tailor your documentation space to fit your branding and workflow needs.
+---
+
+## Theme and Branding Setup
+
+Customize your Eyuel Documentation space with your brand colors, logos, and fonts. Start by editing the main configuration file.
+
+<Steps>
+  <Step title="Locate Config File" icon="settings">
+    Find `eyuel.config.json` in your project root.
+  </Step>
+  <Step title="Update Branding" icon="palette">
+    Set your primary color and logo.
+
+````json
+{
+  "theme": {
+    "primaryColor": "#3B82F6",
+    "logoUrl": "https://your-domain.com/logo.svg",
+    "fontFamily": "Inter, sans-serif"
+  }
+}
+````
+  </Step>
+  <Step title="Apply Changes" icon="refresh-cw">
+    Restart the documentation server with `npm run dev`.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Preview changes in real-time by enabling hot reload in your config: `"hotReload": true`.
+</Callout>
+
+## User Permissions and Access
+
+Control who can view, edit, or administer your documentation. Define roles in the permissions section.
+
+<Tabs>
+  <Tab title="Admin Role" icon="shield">
+    Full access for site owners.
+
+    ```json
+    {
+      "roles": {
+        "admin": {
+          "permissions": ["read", "write", "delete", "manage_users"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Editor Role" icon="edit-3">
+    Edit content without user management.
+
+    ```json
+    {
+      "roles": {
+        "editor": {
+          "permissions": ["read", "write"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Viewer Role" icon="eye">
+    Read-only access.
+
+    ```json
+    {
+      "roles": {
+        "viewer": {
+          "permissions": ["read"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+Assign users via the dashboard or API.
+
+## Integration Options
+
+Connect Eyuel Documentation to your tools for seamless workflows.
+
+<Columns cols={2}>
+  <Card title="GitHub Sync" icon="github" href="/docs/integrations/github">
+    Automatically sync changes from your repo.
+  </Card>
+  <Card title="Slack Notifications" icon="message-circle" href="/docs/integrations/slack">
+    Get alerts on updates and deployments.
+  </Card>
+  <Card title="Analytics" icon="bar-chart-3" href="/docs/integrations/analytics">
+    Track page views with Google Analytics.
+  </Card>
+  <Card title="Search" icon="search" href="/docs/integrations/search">
+    Add Algolia for full-text search.
+  </Card>
+</Columns>
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// GitHub webhook setup
+const webhook = {
+  url: 'https://api.eyuel.dev/webhooks/github',
+  secret: 'YOUR_WEBHOOK_SECRET'
+};
+```
+```python
+# GitHub webhook setup
+webhook = {
+    'url': 'https://api.eyuel.dev/webhooks/github',
+    'secret': 'YOUR_WEBHOOK_SECRET'
+}
+```
+</CodeGroup>
+
+## Export and Backup Settings
+
+Protect your content with regular exports and backups.
+
+### Automatic Backups
+
+Enable scheduled backups to your preferred storage.
+
+```json
+{
+  "backups": {
+    "enabled": true,
+    "schedule": "0 2 * * *",  // Daily at 2 AM
+    "destination": "s3://your-bucket/eyuel-backups",
+    "retentionDays": 30
+  }
+}
+```
+
+### Manual Export
+
+Export to Markdown, PDF, or HTML from the dashboard.
+
+| Format   | Use Case                  | File Size Estimate |
+|----------|---------------------------|--------------------|
+| Markdown | Git repos, CMS import     | `<1MB`            |
+| PDF      | Printable docs            | `5-10MB`          |
+| HTML     | Static hosting            | `2-5MB`           |
+
+<Expandable title="Advanced Backup Configuration" default-open="false">
+
+For custom scripts:
+
+```bash
+eyuel export --format=md --output=./exports --include-images
+```
+
+</Expandable>
+
+<Callout kind="alert">
+  Test your backups regularly to ensure data integrity.
+</Callout>

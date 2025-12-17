@@ -1,0 +1,134 @@
+---
+title: Frequently Asked Questions
+description: Answers to common queries about using Eyuel Documentation.
+---
+
+## Overview
+
+Eyuel Documentation helps you organize project docs efficiently. You encounter common questions about accounts, content, performance, and troubleshooting. This page addresses them directly using expandable sections for quick reference.
+
+<Columns cols={2}>
+  <Card title="Account & Billing" icon="user" href="#account-billing">
+    Manage subscriptions and access.
+  </Card>
+  <Card title="Content Tips" icon="edit-3" href="#content-management">
+    Best practices for pages.
+  </Card>
+  <Card title="Performance" icon="zap" href="#performance-limits">
+    Understand limits and optimization.
+  </Card>
+  <Card title="Troubleshooting" icon="alert-triangle" href="#troubleshooting">
+    Fix common issues fast.
+  </Card>
+</Columns>
+
+## Account and Billing
+
+<ExpandableGroup>
+
+<Expandable title="How do I upgrade my plan?">
+
+Navigate to your account settings. Select the desired plan and confirm payment details. You receive instant access upon successful billing.
+
+<Callout kind="tip">
+  Annual plans save 20%. Review features before upgrading.
+</Callout>
+
+</Expandable>
+
+<Expandable title="What happens if I exceed storage limits?">
+
+You get notified via email and dashboard alerts. Upgrade your plan or delete unused files to restore full access.
+
+</Expandable>
+
+<Expandable title="How to cancel subscription?">
+
+Go to billing settings, click "Cancel Plan," and follow prompts. Access remains until the end of your billing cycle.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Content Management Tips
+
+Organize pages with clear hierarchies and components. Use frontmatter for metadata and H2 headings to structure content.
+
+<CodeGroup tabs="MDX,YAML">
+```mdx
+---
+title: My Page
+description: Page summary.
+---
+## Overview
+
+Content starts here.
+```
+```yaml
+# Example frontmatter
+title: "API Reference"
+description: "Endpoint details."
+```
+</CodeGroup>
+
+<Callout kind="info">
+Avoid raw `{` or `}` in prose—wrap them in backticks like `{variable}` to prevent parsing errors.
+</Callout>
+
+## Performance and Limits
+
+Eyuel enforces limits to ensure reliability. Review this table for key quotas.
+
+| Feature          | Free Plan | Pro Plan   | Enterprise |
+|------------------|-----------|------------|------------|
+| Pages            | 50        | 500        | Unlimited  |
+| Storage          | 1 GB      | 50 GB      | 1 TB       |
+| API Calls/month  | 1,000     | 100,000    | Unlimited  |
+| Team Members     | 1         | 10         | Unlimited  |
+
+<Callout kind="alert">
+Exceeding limits triggers soft throttling. Monitor usage in your dashboard.
+</Callout>
+
+## Troubleshooting Basics
+
+<Expandable title="Page not rendering correctly?" default-open="true">
+
+Check for syntax errors like unescaped `<` characters. Use browser dev tools to inspect console logs.
+
+<Tabs>
+  <Tab title="Browser" icon="globe">
+    Press F12, view Console tab for MDX errors.
+  </Tab>
+  <Tab title="CLI" icon="terminal">
+    ```bash
+    npx @mdx-js/mdx your-file.mdx --validate
+    ```
+  </Tab>
+</Tabs>
+
+</Expandable>
+
+<Tabs>
+  <Tab title="Slow Loading" icon="loader">
+    <Steps>
+      <Step title="Clear Cache" icon="refresh-cw">
+        Run `rm -rf .cache` in your project root.
+      </Step>
+      <Step title="Optimize Images">
+        Compress assets under 500KB each.
+      </Step>
+      <Step title="Check Limits">
+        Verify against the table above.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Build Errors" icon="bug">
+    Ensure Node.js version `>=18`. Update dependencies:
+    ```bash
+    npm update @mdx-js/mdx mdx-components
+    ```
+  </Tab>
+</Tabs>
+
+For persistent issues, contact support with error logs and your workspace ID.

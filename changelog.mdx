@@ -1,0 +1,153 @@
+---
+title: Changelog
+description: Track the latest updates, new features, and improvements in Eyuel Documentation.
+---
+
+## Recent Releases
+
+Eyuel Documentation evolves rapidly to help you build better docs. Review the latest releases below to see new features, bug fixes, and changes. Each release includes migration notes where needed.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added support for custom brand colors in themes. Set your brand color like `#3B82F6` in config.
+- Introduced `<Columns>` component for responsive grids.
+
+## Improvements
+
+- Enhanced MDX parsing speed by 40% for large docs sites.
+- Better error messages for invalid JSX components.
+
+## Bug Fixes
+
+- Fixed Mermaid diagram rendering in nested code blocks.
+- Resolved frontmatter parsing issues with special characters.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New `<Update>` component for changelog entries.
+- Tabs now support icons for platform-specific content.
+
+## Bug Fixes
+
+- Corrected attribute quoting in JSX components (double quotes enforced).
+- Fixed heading hierarchy enforcement (no more H1 in body).
+
+## Breaking Changes
+
+- ParamField requires exactly one location attribute (`path`, `query`, etc.).
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core MDX components: `<Callout>`, `<Steps>`, `<CodeGroup>`.
+- Full support for Lucide icons in all components.
+
+## Initial Setup
+
+- Install via `npm install eyuel-docs`.
+- Configure your first page with YAML frontmatter.
+
+</Update>
+
+## Upcoming Features
+
+Stay tuned for these enhancements in the next release.
+
+<Columns cols={3}>
+  <Card title="AI Code Gen" icon="bot" href="/docs/ai-features">
+    Generate MDX pages from prompts automatically.
+  </Card>
+  <Card title="Search Integration" icon="search" href="/docs/search">
+    Full-text search across your documentation.
+  </Card>
+  <Card title="Versioned Docs" icon="git-branch" href="/docs/versioning">
+    Maintain multiple doc versions seamlessly.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Follow [@eyueldocs](https://github.com/eyuel/docs) on GitHub for release announcements.
+</Callout>
+
+## Migration Notes
+
+Upgrade smoothly with these guides.
+
+<Tabs>
+  <Tab title="v0.x to v1.0" icon="arrow-up">
+
+    <Steps>
+      <Step title="Update Package" icon="package">
+        ```bash
+        npm install eyuel-docs@latest
+        ```
+      </Step>
+      <Step title="Fix Frontmatter" icon="edit-3">
+        Ensure no blank lines in YAML:
+
+        ````yaml
+        ---
+        title: "Page Title"
+        description: "Brief desc"
+        ---
+        ````
+      </Step>
+      <Step title="Test Components" icon="check-circle">
+        Verify `<Callout kind="info">Test</Callout>` renders correctly.
+      </Step>
+    </Steps>
+
+  </Tab>
+  <Tab title="v1.1 to v1.2" icon="settings">
+
+    <CodeGroup tabs="Config,MDX">
+      ```javascript
+      // eyuel.config.js
+      module.exports = {
+        theme: {
+          brandColor: '#3B82F6'
+        }
+      };
+      ```
+
+      ```mdx
+      <Columns cols={2}>
+        <Card title="Feature A" icon="star" href="#" />
+        <Card title="Feature B" icon="heart" href="#" />
+      </Columns>
+      ```
+    </CodeGroup>
+
+  </Tab>
+</Tabs>
+
+<ExpandableGroup>
+  <Expandable title="Detailed Breaking Changes" default-open="false">
+
+    In v1.1.0, escape special characters like `{variable}` and `<Component>` in prose to prevent parsing errors. Rephrase if possible.
+
+    | Change | Impact | Fix |
+    |--------|--------|-----|
+    | Single quotes in attributes | Parsing fails | Use double quotes: `title="Text"` |
+    | Raw `{ }` in text | JSX confusion | Wrap in backticks: `{API_KEY}` |
+    | H1 headings | Hierarchy broken | Start with H2 only |
+
+  </Expandable>
+</ExpandableGroup>
+
+## Stay Updated
+
+1. Check this changelog regularly.
+2. Enable GitHub notifications for the repo.
+3. Join the community Discord for beta access.
+
+Your feedback drives improvements—share issues on GitHub.

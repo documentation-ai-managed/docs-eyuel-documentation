@@ -1,0 +1,120 @@
+---
+title: Quickstart Guide
+description: Set up your first documentation project and start creating content in just a few minutes.
+---
+
+## Overview
+
+Get started with Eyuel Documentation quickly. Follow these steps to create an account, set up a project, add your first page, and explore the interface. You complete the setup in under five minutes.
+
+<Callout kind="success">
+Eyuel Documentation uses MDX for rich, interactive pages with components like Steps and Cards.
+</Callout>
+
+## Create Your Account
+
+Sign up and log in to access your documentation workspace.
+
+<Steps>
+  <Step title="Visit the site" icon="globe">
+    Navigate to [eyuel.dev](https://eyuel.dev) in your browser.
+  </Step>
+  <Step title="Sign up" icon="user-plus">
+    Click **Sign Up** and enter your email, name, and password. Verify your email via the confirmation link.
+  </Step>
+  <Step title="Log in" icon="log-in">
+    Return to the homepage and click **Log In**. Use your credentials to access the dashboard.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+Enable two-factor authentication in your account settings for added security.
+</Callout>
+
+## Create a New Project
+
+Organize your docs into projects for better management.
+
+<Steps>
+  <Step title="Access dashboard" icon="layout">
+    From the sidebar, select **Projects**.
+  </Step>
+  <Step title="New project" icon="plus">
+    Click **New Project**, enter a name like `My API Docs`, and select a template (e.g., API Reference).
+  </Step>
+  <Step title="Configure" icon="settings">
+    Set your brand color to `#3B82F6` and add a description. Click **Create**.
+  </Step>
+</Steps>
+
+## Add Your First Page
+
+Create content using MDX with built-in components.
+
+<Tabs>
+  <Tab title="Home Page" icon="home">
+    <Steps>
+      <Step title="New page" icon="file-plus">
+        In your project, click **New Page** and name it `index.mdx`.
+      </Step>
+      <Step title="Add frontmatter" icon="code">
+        Paste this YAML at the top:
+      </Step>
+    </Steps>
+
+    <CodeGroup tabs="MDX">
+```mdx
+---
+title: Welcome
+description: Your docs homepage.
+---
+```
+    </CodeGroup>
+  </Tab>
+  <Tab title="API Page" icon="api">
+    <Steps>
+      <Step title="API endpoint" icon="zap">
+        Name it `endpoints.mdx` and use `<Request>` components for examples.
+      </Step>
+    </Steps>
+
+    <CodeGroup tabs="Request,Response">
+```javascript
+const response = await fetch('https://api.example.com/users', {
+  method: 'POST',
+  headers: { 'Authorization': `Bearer ${YOUR_TOKEN}` },
+  body: JSON.stringify({ name: 'John' })
+});
+```
+```json
+{
+  "id": "user-123",
+  "name": "John Doe",
+  "createdAt": "2024-01-01T00:00:00Z"
+}
+```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Interface Tour
+
+Explore key areas with these feature highlights.
+
+<Columns cols={3}>
+  <Card title="Editor" icon="edit-3" href="/docs/editor">
+    Write MDX with live preview. Supports autocomplete for components like `<Steps>` and `<Callout>`.
+  </Card>
+  <Card title="Sidebar" icon="menu" href="/docs/navigation">
+    Manage projects, pages, and settings. Drag to reorder pages.
+  </Card>
+  <Card title="Preview" icon="eye" href="/docs/preview">
+    Real-time rendering with your brand color `#3B82F6`. Share public previews instantly.
+  </Card>
+</Columns>
+
+<Expandable title="Next Steps" default-open="true">
+  Publish your site via custom domain, invite collaborators, or integrate with GitHub for version control.
+</Expandable>
+
+Your first Eyuel project is ready. Start editing pages to build comprehensive docs.
